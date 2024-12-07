@@ -1,0 +1,70 @@
+/* General Container Styling */
+.configuration-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: "Arial", sans-serif;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Styling */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-group {
+    text-align: left;
+  }
+  
+  label {
+    font-size: 1rem;
+    color: #555;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  input::placeholder {
+    color: #bbb;
+    font-size: 0.9rem;
+  }
+  
+  small {
+    color: #777;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  /* Submit Button Styling */
+  .submit-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #f54c84;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #c8a8b2;
+  }
+  
