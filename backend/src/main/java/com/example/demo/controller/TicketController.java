@@ -32,6 +32,7 @@ public class TicketController {
 
     @GetMapping("/stream")
     public void streamTicketStatus() {
-        messagingTemplate.convertAndSend("/topic/tickets", getAvailableTickets());
+        long availableTickets = ticketService.getAvailableTickets();
+        messagingTemplate.convertAndSend("/topic/tickets", availableTickets);
     }
 }

@@ -12,18 +12,19 @@ import java.util.concurrent.LinkedBlockingQueue;
 @RequiredArgsConstructor
 public class ProducerConsumerService {
 
-    private final TicketRepository ticketRepository;  // Injected through constructor
+    private final TicketRepository ticketRepository;
     private final BlockingQueue<Ticket> ticketQueue = new LinkedBlockingQueue<>(100);
 
     public void produceTickets(int count, String eventName) {
         for (int i = 0; i < count; i++) {
             Ticket ticket = new Ticket();
             ticket.setEventName(eventName);
-            ticket.setSold(false);  // Mark as unsold initially
+            ticket.setSold(false);
             try {
-                ticketQueue.put(ticket);  // Put the ticket into the queue
+                ticketQueue.put(ticket);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
+                throw new IllegalStateException("Ticket production was interrupted", e);
             }
         }
     }
@@ -31,16 +32,13 @@ public class ProducerConsumerService {
     public void consumeTickets(int count) {
         for (int i = 0; i < count; i++) {
             try {
-                Ticket ticket = ticketQueue.take();  // Take the ticket from the queue
-                ticket.setSold(true);  // Mark as sold
-                ticketRepository.save(ticket);  // Save to database
+                Ticket ticket = ticketQueue.take();
+                ticket.setSold(true);
+                ticketRepository.save(ticket);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
+                throw new IllegalStateException("Ticket consumption was interrupted", e);
             }
         }
-    }
-
-    public BlockingQueue<Ticket> getTicketQueue() {
-        return ticketQueue;
     }
 }

@@ -12,5 +12,5 @@ public class Ticket {
     @Id
     private String id;
     private String eventName;
-    private boolean isSold;
+    private boolean sold; // Corrected field name
 }
