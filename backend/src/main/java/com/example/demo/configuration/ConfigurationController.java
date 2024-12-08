@@ -1,7 +1,5 @@
-package com.example.demo.controller;
+package com.example.demo.configuration;
 
-import com.example.demo.model.Configuration;
-import com.example.demo.service.ConfigurationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
