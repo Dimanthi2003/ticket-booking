@@ -1,10 +1,9 @@
-package com.example.demo.controller;
+package com.ticket.booking.controller;
 
 import com.ticket.booking.model.TicketConfiguration;
 import com.ticket.booking.service.TicketManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -15,8 +14,7 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:3000")
 public class TicketController {
 
-
-    private final TicketService ticketService;
+    private final TicketManager ticketManager;
     private final TicketConfiguration ticketConfiguration;
 
     public TicketController(TicketManager ticketManager, TicketConfiguration ticketConfiguration) {
@@ -41,12 +39,6 @@ public class TicketController {
         return ResponseEntity.ok(status);
     }
 
-<<<<<<< Updated upstream
-    @GetMapping("/stream")
-    public void streamTicketStatus() {
-        long availableTickets = ticketService.getAvailableTickets();
-        messagingTemplate.convertAndSend("/topic/tickets", availableTickets);
-=======
 
     @PostMapping("/start")
     public void start() {
@@ -56,10 +48,5 @@ public class TicketController {
     @PostMapping("/stop")
     public void stop() {
         ticketManager.stop();
->>>>>>> Stashed changes
     }
 }
-
-
-
-

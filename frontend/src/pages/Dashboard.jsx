@@ -26,7 +26,7 @@ const Dashboard = () => {
                 console.error("Failed to fetch status:", error);
             }
         };
-
+    
         fetchStatus();
     }, []);
 
@@ -91,7 +91,7 @@ const Dashboard = () => {
                 {logs.map((log, index) => (
                     <p key={index}>{new Date().toLocaleTimeString()}: {log}</p>
                 ))}
-                {error && <p style={{ color: "red" }}>{error}</p>}
+                 {error && <p style={{ color: "red" }}>{error}</p>}
             </div>
         </div>
     );

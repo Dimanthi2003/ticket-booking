@@ -1,6 +1,7 @@
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ConfigurationPage from "./src/components/ConfigurationPage.jsx";
-import Dashboard from "./src/components/Dashboard.jsx";
+import ConfigurationPage from "./pages/ConfigurationPage";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => (
     <BrowserRouter>

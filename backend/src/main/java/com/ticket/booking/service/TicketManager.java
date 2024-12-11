@@ -1,25 +1,11 @@
-package com.example.demo.service;
+package com.ticket.booking.service;
 
-import com.example.demo.model.Configuration;
-import com.example.demo.repository.ConfigurationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.ticket.booking.model.TicketConfiguration;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-<<<<<<< Updated upstream
-public class ConfigurationService {
-
-    @Autowired
-    private ConfigurationRepository repository;
-
-    public Configuration saveConfiguration(Configuration config) {
-        return repository.save(config);
-    }
-
-    public long getTicketCount() {
-        // Simulating a live ticket count; replace with real logic if needed.
-        return repository.findAll().stream().mapToInt(Configuration::getTotalTickets).sum();
-=======
 public class TicketManager {
 
     private final SimpMessagingTemplate messagingTemplate;
@@ -61,6 +47,5 @@ public class TicketManager {
 
     public boolean isRunning() {
         return isRunning;
->>>>>>> Stashed changes
     }
 }
