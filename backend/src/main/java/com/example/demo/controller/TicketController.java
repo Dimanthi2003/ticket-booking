@@ -1,38 +1,65 @@
 package com.example.demo.controller;
 
-import com.example.demo.service.ProducerConsumerService;
-import com.example.demo.service.TicketService;
+import com.ticket.booking.model.TicketConfiguration;
+import com.ticket.booking.service.TicketManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import lombok.RequiredArgsConstructor;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/tickets")
+@CrossOrigin(origins = "http://localhost:3000")
 public class TicketController {
 
-    private final ProducerConsumerService producerConsumerService;
+
     private final TicketService ticketService;
-    private final SimpMessagingTemplate messagingTemplate;
+    private final TicketConfiguration ticketConfiguration;
 
-    @PostMapping("/produce")
-    public void produceTickets(@RequestParam int count, @RequestParam String eventName) {
-        producerConsumerService.produceTickets(count, eventName);
+    public TicketController(TicketManager ticketManager, TicketConfiguration ticketConfiguration) {
+        this.ticketManager = ticketManager;
+        this.ticketConfiguration = ticketConfiguration;
     }
 
-    @PostMapping("/consume")
-    public void consumeTickets(@RequestParam int count) {
-        producerConsumerService.consumeTickets(count);
+
+    @PostMapping("/configure")
+    public ResponseEntity<String> configure(@RequestBody TicketConfiguration config) {
+        ticketConfiguration.setMaxTickets(config.getMaxTickets());
+        ticketConfiguration.setTotalTickets(config.getTotalTickets());
+        ticketConfiguration.setTicketReleaseRate(config.getTicketReleaseRate());
+        ticketConfiguration.setCustomerRetrievalRate(config.getCustomerRetrievalRate());
+        return ResponseEntity.ok("Configuration updated successfully");
     }
 
-    @GetMapping("/available")
-    public long getAvailableTickets() {
-        return ticketService.getAvailableTickets();
+    @GetMapping("/status")
+    public ResponseEntity<Map<String, Object>> getStatus() {
+        Map<String, Object> status = new HashMap<>();
+        status.put("isRunning", ticketManager.isRunning());
+        return ResponseEntity.ok(status);
     }
 
+<<<<<<< Updated upstream
     @GetMapping("/stream")
     public void streamTicketStatus() {
         long availableTickets = ticketService.getAvailableTickets();
         messagingTemplate.convertAndSend("/topic/tickets", availableTickets);
+=======
+
+    @PostMapping("/start")
+    public void start() {
+        ticketManager.start();
+    }
+
+    @PostMapping("/stop")
+    public void stop() {
+        ticketManager.stop();
+>>>>>>> Stashed changes
     }
 }
+
+
+
+

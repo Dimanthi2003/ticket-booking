@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+<<<<<<< Updated upstream
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -30,6 +31,19 @@ public class Configuration {
     public void setId(String id) {
         this.id = id;
     }
+=======
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ConfigurationProperties(prefix = "ticket")
+public class Configuration {
+
+    private int maxTickets;
+    private int totalTickets;
+    private int ticketReleaseRate;
+    private int customerRetrievalRate;
+>>>>>>> Stashed changes
 
     public int getMaxTickets() {
         return maxTickets;
@@ -47,6 +61,7 @@ public class Configuration {
         this.totalTickets = totalTickets;
     }
 
+<<<<<<< Updated upstream
     public int getReleaseRate() {
         return releaseRate;
     }
@@ -63,3 +78,22 @@ public class Configuration {
         this.retrievalRate = retrievalRate;
     }
 }
+=======
+    public int getTicketReleaseRate() {
+        return ticketReleaseRate;
+    }
+
+    public void setTicketReleaseRate(int ticketReleaseRate) {
+        this.ticketReleaseRate = ticketReleaseRate;
+    }
+
+    public int getCustomerRetrievalRate() {
+        return customerRetrievalRate;
+    }
+
+    public void setCustomerRetrievalRate(int customerRetrievalRate) {
+        this.customerRetrievalRate = customerRetrievalRate;
+    }
+}
+}
+>>>>>>> Stashed changes

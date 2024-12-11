@@ -1,0 +1,57 @@
+/* Dashboard.css */
+
+h2, h3, h4 {
+    text-align: center;
+    color: #333;
+}
+
+div {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    margin: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #28a745;
+    color: #fff;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+div > h4 {
+    margin-bottom: 10px;
+}
+
+div > .logs-container {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.logs-container p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.logs-container p.error {
+    color: red;
+}

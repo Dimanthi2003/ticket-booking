@@ -1,17 +1,14 @@
-import "./App.css";
-import LandingPage from "./pages/LandingPage";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LogPage from "./pages/LogPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ConfigurationPage from "./src/components/ConfigurationPage.jsx";
+import Dashboard from "./src/components/Dashboard.jsx";
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/log" element={<LogPage />} />
-      </Routes>
-    </Router>
-  );
-}
+const App = () => (
+    <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<ConfigurationPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+    </BrowserRouter>
+);
 
 export default App;
